@@ -1,8 +1,10 @@
 def cislo_text(cislo):
     # funkce zkonvertuje cislo do jeho textove reprezentace
     # napr: "25" -> "dvacet pět", omezte se na cisla od 0 do 100
-
-    cislo = int(cislo)
+    try:
+        cislo = int(cislo)
+    except:
+        return "Neplatné zadání"
 
     if cislo < 0 or cislo > 100:
         return "Číslo mimo rozsah"
