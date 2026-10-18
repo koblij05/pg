@@ -14,50 +14,50 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
 
     # cíl mimo šachovnici
     if x < 1 or x > 8 or y < 1 or y > 8:
-        print("Debug: je mimo")
+        # print("Debug: je mimo")
         return False
     
     # cíl je obsazený
     if (x, y) in obsazene_pozice:
-        print("Debug: obsazeno")
+        # print("Debug: obsazeno")
         return False
 
     # tah není přípustný
     dx = cilova_pozice[0] - figurka["pozice"][0]
     dy = cilova_pozice[1] - figurka["pozice"][1]
-    print("Debug: pohyb o", dx, dy)
+    # print("Debug: pohyb o", dx, dy)
     if dx == 0 and dy == 0:
-        print("Debug: bez pohybu")
+        # print("Debug: bez pohybu")
         return False
     if figurka["typ"] == "pěšec":
         if not ((dx == 1 or (dx == 2 and figurka["pozice"][0] == 2)) and dy == 0):
-            print("Debug: nepřípustný tah pěšcem")
+            # print("Debug: nepřípustný tah pěšcem")
             return False
     if figurka["typ"] == "jezdec":
         if not ((abs(dx) == 1 and abs(dy) == 2) or (abs(dx) == 2 and abs(dy) == 1)):
-            print("Debug: nepřípustný tah jezdcem")
+            # print("Debug: nepřípustný tah jezdcem")
             return False
     if figurka["typ"] == "věž":
         if not (dx == 0 or dy == 0):
-            print("Debug: nepřípustný tah věže")
+            # print("Debug: nepřípustný tah věže")
             return False
     if figurka["typ"] == "střelec":
         if not (abs(dx) == abs(dy)):
-            print("Debug: nepřípustný tah střelce")
+            # print("Debug: nepřípustný tah střelce")
             return False
     if figurka["typ"] == "dáma":
         if not (dx == 0 or dy == 0 or abs(dx) == abs(dy)):
-            print("Debug: nepřípustný tah dámy")
+            # print("Debug: nepřípustný tah dámy")
             return False
     if figurka["typ"] == "král":
         if not ((dx == 0 or dy == 0 or abs(dx) == abs(dy)) and (abs(dx) <= 1 and abs(dy) <= 1)):
-            print("Debug: nepřípustný tah krále")
+            # print("Debug: nepřípustný tah krále")
             return False
 
     # něco je v cestě
     if figurka["typ"] == "pěšec" and dx == 2:
         if (figurka["pozice"][0] + 1, figurka["pozice"][1]) in obsazene_pozice:
-            print("Debug: cesta pěšce obsazená")
+            # print("Debug: cesta pěšce obsazená")
             return False
     if figurka["typ"] in ("věž", "střelec", "dáma"):
         _x, _y = figurka["pozice"]
@@ -72,7 +72,7 @@ def je_tah_mozny(figurka, cilova_pozice, obsazene_pozice):
             elif dy < 0:
                 _y -= 1
             if (_x, _y) in obsazene_pozice:
-                print(F"Debug: cesta {figurka["typ"]} obsazená")
+                # print(F"Debug: cesta {figurka["typ"]} obsazená")
                 return False
 
     return True
