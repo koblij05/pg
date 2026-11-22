@@ -72,8 +72,6 @@ if __name__ == '__main__':
             print(f'Soubor "{file_name}" neexistuje.')
             sys.exit(1)
         print_file_type(file_name)
-        
-        x = 0 / 0
 
     except Exception as e:
         print(f"Nastala obecná chyba aplikace: {e}")
